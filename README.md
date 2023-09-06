@@ -36,4 +36,4 @@ uvicorn main:app --reload
 ```
 
 ##Autor
-👨‍💻**[Lautaro Suárez]**(https://github.com/Lautisuarez)
+👨‍💻[Lautaro Suárez](https://github.com/Lautisuarez)
