@@ -8,7 +8,7 @@ class Author(Base):
     __tablename__ = "authors"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    field_1 = Column(String)
-    author = Column(String)
-    description = Column(String)
+    field_1 = Column(String(50))
+    author = Column(String(50))
+    description = Column(String(200))
     my_numeric_field = Column(Integer)
