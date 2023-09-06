@@ -35,5 +35,5 @@ Una vez hecho todo, lo único que queda es ejecutar el siguiente comando:
 uvicorn main:app --reload
 ```
 
-##Autor
+## Autor
 👨‍💻[Lautaro Suárez](https://github.com/Lautisuarez)
