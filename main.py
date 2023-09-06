@@ -31,11 +31,11 @@ def get_security(credentials: Annotated[HTTPBasicCredentials, Depends(security)]
     """
     userDB = get_user(db, credentials.username)
     try:
-        if not(credentials.username != userDB.username and credentials.password != userDB.password):
-            return False
+        if (credentials.username == userDB.username and credentials.password == userDB.password):
+            return True
     except:
         return False
-    return True
+    return False
 
 @app.get("/data/{id}", response_model=AuthorSchema)
 def get_data_id(isLogin: Annotated[str, Depends(get_security)], id: int, db: Session = Depends(get_db)):
@@ -47,6 +47,7 @@ def get_data_id(isLogin: Annotated[str, Depends(get_security)], id: int, db: Ses
         id - es el ID del author a buscar, debe ser un int
         db - es la sesion actual de la BD 
     """
+    print(isLogin)
     if not(isLogin): raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Incorrect username or password")
     db_author = get_author(db, id)
     if(db_author is None):
