@@ -1,5 +1,6 @@
 from sqlalchemy.orm import Session
 from model.author import Author as AuthorModel
+from model.user import User as UserModel
 from schemas.class_author import Author
 
 def get_author(db: Session, id: int):
@@ -23,3 +24,12 @@ def insert_author(db: Session, author: Author):
     db.commit()
     db.refresh(db_author)
     return db_author
+
+def get_user(db: Session, username: str):
+    """  
+        Devuelve un usuario de la BD que tenga el mismo ID que el pasado por parametro
+        Argumentos:
+        db - es la sesion actual de la BD
+        username - es el nombre de usuario a buscar, debe ser un string
+    """
+    return db.query(UserModel).filter(UserModel.username == username).first()
